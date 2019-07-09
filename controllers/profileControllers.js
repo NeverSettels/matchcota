@@ -3,17 +3,21 @@ const User = require('../models/User')
 const Adoptee = require('../models/Adoptee')
 const Adopter = require('../models/Adopter')
 
-//diplays view of  Form for adopter create
 exports.getAdopterCreate = (req, res, next) => {
   res.render('profile/adopter-create')
 }
 
 exports.postAdopterCreate = async (req, res, next) => {
+<<<<<<< HEAD
   //console.log(req.user)
   //get user id for User model
+=======
+  console.log(req.user)
+
+>>>>>>> humberto
   const { _id } = req.user
   const userID = _id
-  // get info from From to the right variables in adopter model
+
   const {
     typeHome,
     propertyType,
@@ -26,10 +30,9 @@ exports.postAdopterCreate = async (req, res, next) => {
     otherPets,
     numPets
   } = req.body
-  //take URL's for files upleades and set to varibale in adopter model
+
   const photos = req.files.map(photo => photo.url)
 
-  //crates new adopter linked to profile
   await Adopter.create({
     userID,
     typeHome,
@@ -72,4 +75,47 @@ exports.postAdopterProfile = (req, res, next) => {
       res.render('profile/adopter-profile', adopter)
     })
     .catch(err => res.redirect('/login'))
+exports.getAdopteeCreate = (req, res, next) => {
+  res.render('profile/pet-create')
+}
+
+exports.postAdopteeCreate = async (req, res, next) => {
+  console.log(req.user)
+
+  const { _id } = req.user
+  const userID = _id
+
+  const { petType, otherPetType, petSize, gender, sterilized, character, medicalNeeds, ifMedicalNeeds, age } = req.body
+
+  const photos = req.files.map(photo => photo.url)
+
+  await Adoptee.create({
+    userID,
+    petType,
+    otherPetType,
+    petSize,
+    gender,
+    sterilized,
+    character,
+    medicalNeeds,
+    ifMedicalNeeds,
+    age,
+    photos
+  })
+
+  res.redirect('/pet-profile')
+}
+
+// delete commands TO DO
+
+exports.deletePet = (req, res, next) => {
+  Place.findByIdAndDelete(req.params.id)
+    .then(() => res.redirect('/'))
+    .catch(err => next(err))
+}
+
+exports.deleteUser = (req, res, next) => {
+  Place.findByIdAndDelete(req.params.id)
+    .then(() => res.redirect('/'))
+    .catch(err => next(err))
 }
