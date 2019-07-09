@@ -1,0 +1,27 @@
+<form action="/adopter-create" method="POST" enctype="multipart/form-data">
+  <section>Remeber to fill the following information as honestly as possible so that you can connect with a pet that
+    truly meets yours needs, and so that you can fufill its needs as well.</section>
+
+  <input type="hidden" name="userID" id='userID'>
+  <p>Upload some relevant pictures, such as yard, where the pet would reside or simply some of you living space</p>
+  <label for="photo">Select photos</label>
+  <input type="text" name="photo">
+  <p>In what type of residence do you currently live</p>
+  <label for="typeHome">Choose one</label>
+  <select name="typeHome" id="typeHome">
+    <option value="house">I live in a house</option>
+    <option value="apartment">I live in an apartment</option>
+  </select>
+  <label for="propertyType">Choose one</label>
+  <select name="propertyType" id="propertyType">
+    <option value="rent">I rent</option>
+    <option value="own">I own</option>
+  </select>
+  <p>Please indicate the size of you yard</p>
+  <label for="yard">Choose one</label>
+  <select name="yard" id="yard">
+    <option value="rent">I rent</option>
+    <option value="own">I own</option>
+  </select>
+
+</form>
