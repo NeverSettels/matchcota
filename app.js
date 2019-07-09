@@ -36,10 +36,10 @@ app.use(
   session({
     secret: 'process.env.SESSION',
     resave: true,
-    cookie: { maxAge: 1000 * 60 },
+    cookie: { maxAge: 24 * 60 * 60 * 1000 },
     store: new mongoStore({
       mongooseConnection: mongoose.connection,
-      ttl: 24 * 60 * 60
+      ttl: 24 * 60 * 60 * 1000
     })
   })
 )

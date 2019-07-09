@@ -26,7 +26,7 @@ const adopterSchema = new Schema({
     enum: ['unemployed', 'self-employed', 'retired', 'part-time', 'full-time', 'student']
   },
   freeHoursPerWeek: Number,
-  fristPet: Boolean,
+  firstPet: Boolean,
   otherPets: Boolean,
   numPets: Number
 })

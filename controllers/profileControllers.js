@@ -9,7 +9,7 @@ exports.getAdopterCreate = (req, res, next) => {
 }
 
 exports.postAdopterCreate = async (req, res, next) => {
-  console.log(req.user)
+  //console.log(req.user)
   //get user id for User model
   const { _id } = req.user
   const userID = _id
@@ -49,3 +49,27 @@ exports.postAdopterCreate = async (req, res, next) => {
 }
 
 /** Add adoptee profiles here (make sure adoptee model is being exported ) */
+
+exports.getAdopterProfile = (req, res, next) => {
+  const { _id } = req.user
+  const userID = _id
+
+  adopter = Adopter.findOne({ userID })
+    .then(adopter => {
+      //console.log(adopter)
+      res.render('profile/adopter-profile', adopter)
+    })
+    .catch(err => res.render('profile/adopter-profile', err))
+}
+
+exports.postAdopterProfile = (req, res, next) => {
+  console.log('body', req.body, 'user', req.user)
+  const { _id } = req.user
+  const userID = _id
+  adopter = Adopter.findOneAndUpdate({ userID }, { ...req.body }, { new: true })
+    .then(adopter => {
+      console.log('adopter', adopter)
+      res.render('profile/adopter-profile', adopter)
+    })
+    .catch(err => res.redirect('/login'))
+}

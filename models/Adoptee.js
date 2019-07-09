@@ -1,6 +1,6 @@
 const { model, Schema } = require('mongoose')
 
-const adopterSchema = new Schema({
+const adopteeSchema = new Schema({
   userID: String,
   photos: [String],
   petType: String,
