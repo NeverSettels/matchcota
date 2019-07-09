@@ -27,8 +27,8 @@ const adopterSchema = new Schema({
   },
   freeHoursPerWeek: Number,
   fristPet: Boolean,
-  otherPets: {
-    type: Boolean,
-    numPets: Number
-  }
+  otherPets: Boolean,
+  numPets: Number
 })
+
+module.exports = model('Adopter', adopterSchema)

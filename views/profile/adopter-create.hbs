@@ -3,10 +3,12 @@
     truly meets yours needs, and so that you can fufill its needs as well.</section>
 
   <input type="hidden" name="userID" id='userID'>
+
+
   <p>Upload some relevant pictures, such as yard, where the pet would reside or simply some of you living space</p>
 
   <label for="photo">Select photos</label>
-  <input type="text" name="photo">
+  <input type="file" name="photo" id='photo' multiple>
 
   <p>In what type of residence do you currently live</p>
   <label for="typeHome">Choose one</label>
@@ -43,5 +45,33 @@
     <option value="pre-teen">6-12 years old</option>
     <option value="teen">13 and up</option>
   </select>
+
+  <p>What is you current state of employment</p>
+  <select name="employmentType" id="childAge">
+    <option value="unemployed">I'm Currently Unemployed</option>
+    <option value="self-employed"> I'm Self-employed</option>
+    <option value="retired">I'm retired</option>
+    <option value="part-time"> I work part-time</option>
+    <option value="full-time">I work full full-time</option>
+    <option value="student">I'm currently a Student</option>
+  </select>
+
+  <p>Aproximatley how many hours a week are the members of your household at home</p>
+  <label for="freeHoursPerWeek">Number of hours</label>
+  <input type="number" name="freeHoursPerWeek" id="freeHoursPerWeek">
+
+  <p>Is this your first time owning a pet</p>
+  <input type="radio" name="firstPet" value="true"> This is my first pet<br>
+  <input type="radio" name="firstPet" value="false"> I have taken care of animals before <br>
+
+  <p>Do you own any other pets</p>
+  <input type="radio" name="otherPets" value="true"> Yes, I have other pets<br>
+  <input type="radio" name="otherPets" value="false"> No, i Don't have other pets <br>
+
+  <p>If you have other pets how many</p>
+  <label for="numPets">Number of pets</label>
+  <input type="number" name='numPets' id="numPets">
+
+  <button type="submit">Save</button>
 
 </form>
