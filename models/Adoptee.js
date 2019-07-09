@@ -4,6 +4,7 @@ const adopterSchema = new Schema({
   userID: String,
   photos: [String],
   petType: String,
+  otherPetType: String,
   petSize: {
     type: String,
     enum: ['very small', 'small', 'medium', 'large', 'huge']
@@ -12,8 +13,12 @@ const adopterSchema = new Schema({
     type: String,
     enum: ['male', 'female']
   },
-  nutered: Boolean,
+  sterilized: Boolean,
   character: [String],
   medicalNeeds: Boolean,
-  age: String
+  ifMedicalNeeds: String,
+  age: {
+    type: String,
+    enum: ['pup', 'young adult', 'adult', 'senior']
+  }
 })

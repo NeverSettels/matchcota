@@ -1,0 +1,52 @@
+<form action="/pet-create" method="POST" enctype="multipart/form-data">
+  <section> In this section you will list all the pet's characteristics, don't forget to be as true as possible in order
+    to find the best match for it!
+  </section>
+
+  <input type="hidden" name="userID" id='userID'>
+  <p>Upload at least three pictures of the pet you're trying to find a home for, consider that these images are the
+    first approach for the adopters so make them AWESOME, avoid including other pets or people in said pictures. </p>
+  <label for="photo">Select photos</label>
+  <input type="text" name="photo">
+  <p>What kind of pet do you have for an adopter?</p>
+  <label for="petType">Choose one</label>
+  <select name="petType" id="petType">
+    <option value="dog">Dog</option>
+    <option value="cat">Cat</option>
+    <option value="other">Other</option>
+    <input type="text" name="otherPetType">
+  </select>
+  <p>Please specify the age of the pet</p>
+  <label for="age">Choose one</label>
+  <select name="age" id="age">
+    <option value="pup">0 - 1 year</option>
+    <option value="young adult"> 1 to 4 years </option>
+    <option value="adult"> 4 to 8 years</option>
+    <option value="senior">More than 8 years</option>
+  </select>
+  <p>Please indicate the size of the pet</p>
+  <label for="petSize">Choose one</label>
+  <select name="petSize" id="petSize">
+    <option value="very small">Very small</option>
+    <option value="small">Small</option>
+    <option value="medium">Medium</option>
+    <option value="large">Large</option>
+    <option value="huge">HUGE</option>
+  </select>
+  <label for="gender">Pet's gender</label>
+  <select name="gender" id="gender">
+    <option value="female">Female</option>
+    <option value="male">Male</option>
+  </select>
+  <p>Is your pet sterilized?</p>
+  <input type="radio" name="sterilized" value="true"> The pet is already sterilized </br>
+  <input type="radio" name="sterilized" value="false"> The pet is not sterilized yet </br>
+
+  <p>Does the pet have any medical needs? If so, please specify</p>
+  <input type="radio" name="medicalNeeds" value="false"> The pet doesn't have any medical needs</br>
+  <input type="radio" name="medicalNeeds" value="true"> The pet has medical needs</br>
+  <input type="text" name="ifMedicalNeeds">
+
+  <button type="submit">Submit pet info</button>
+
+</form>
