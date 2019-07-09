@@ -17,13 +17,9 @@ const adopterSchema = new Schema({
   },
 
   peopleAtHome: Number,
-  Children: {
-    hasChild: Boolean,
-    numChild: Number,
-    childAge: {
-      type: String,
-      enum: ['infant', 'pre-teen', 'teen']
-    }
+  childAge: {
+    type: String,
+    enum: ['no children', 'infant', 'pre-teen', 'teen']
   },
   employmentType: {
     type: String,

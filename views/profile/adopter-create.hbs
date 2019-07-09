@@ -4,28 +4,44 @@
 
   <input type="hidden" name="userID" id='userID'>
   <p>Upload some relevant pictures, such as yard, where the pet would reside or simply some of you living space</p>
+
   <label for="photo">Select photos</label>
   <input type="text" name="photo">
+
   <p>In what type of residence do you currently live</p>
   <label for="typeHome">Choose one</label>
   <select name="typeHome" id="typeHome">
     <option value="house">I live in a house</option>
     <option value="apartment">I live in an apartment</option>
   </select>
+
   <label for="propertyType">Choose one</label>
   <select name="propertyType" id="propertyType">
     <option value="rent">I rent</option>
     <option value="own">I own</option>
   </select>
+
+
   <p>Please indicate the size of you yard</p>
   <label for="yard">Choose one</label>
   <select name="yard" id="yard">
     <option value="no yard">I don't have a yard</option>
     <option value="very small">I have a very small yard</option>
     <option value="small">I have a small yard</option>
-    <option value="medium">I own</option>
-    <option value="large">I rent</option>
-    <option value="huge">I own</option>
+    <option value="medium">I have a medium yard</option>
+    <option value="large">I have a large yard</option>
+    <option value="huge">I don't know where my property ends</option>
+  </select>
+
+  <p>How many people other than youself live in this home</p>
+  <label for="peopleAtHome">Number of people</label>
+  <input type="number" name="peopleAtHome" id="peopleAtHome">
+  <p>If any of these are children what is the age of the youngest</p>
+  <select name="childAge" id="childAge">
+    <option value="no children">I Don't have children</option>
+    <option value="infant">0-5 years old</option>
+    <option value="pre-teen">6-12 years old</option>
+    <option value="teen">13 and up</option>
   </select>
 
 </form>
