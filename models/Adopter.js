@@ -17,22 +17,18 @@ const adopterSchema = new Schema({
   },
 
   peopleAtHome: Number,
-  Children: {
-    hasChild: Boolean,
-    numChild: Number,
-    childAge: {
-      type: String,
-      enum: ['infant', 'pre-teen', 'teen']
-    }
+  childAge: {
+    type: String,
+    enum: ['no children', 'infant', 'pre-teen', 'teen']
   },
   employmentType: {
     type: String,
     enum: ['unemployed', 'self-employed', 'retired', 'part-time', 'full-time', 'student']
   },
   freeHoursPerWeek: Number,
-  fristPet: Boolean,
-  otherPets: {
-    type: Boolean,
-    numPets: Number
-  }
+  firstPet: Boolean,
+  otherPets: Boolean,
+  numPets: Number
 })
+
+module.exports = model('Adopter', adopterSchema)

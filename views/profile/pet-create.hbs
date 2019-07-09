@@ -6,18 +6,20 @@
   <input type="hidden" name="userID" id='userID'>
   <p>Upload at least three pictures of the pet you're trying to find a home for, consider that these images are the
     first approach for the adopters so make them AWESOME, avoid including other pets or people in said pictures. </p>
+
   <label for="photo">Select photos</label>
-  <input type="text" name="photo">
+  <input type="file" name="photo" id="photo" multiple>
+
   <p>What kind of pet do you have for an adopter?</p>
-  <label for="petType">Choose one</label>
+  <label for="petType">Choose pet type</label>
   <select name="petType" id="petType">
     <option value="dog">Dog</option>
     <option value="cat">Cat</option>
     <option value="other">Other</option>
-    <input type="text" name="otherPetType">
+    <input type="text" name="otherPetType" placeholder="if 'OTHER' specify here...">
   </select>
   <p>Please specify the age of the pet</p>
-  <label for="age">Choose one</label>
+  <label for="age">Choose age</label>
   <select name="age" id="age">
     <option value="pup">0 - 1 year</option>
     <option value="young adult"> 1 to 4 years </option>
@@ -25,7 +27,7 @@
     <option value="senior">More than 8 years</option>
   </select>
   <p>Please indicate the size of the pet</p>
-  <label for="petSize">Choose one</label>
+  <label for="petSize">Choose size</label>
   <select name="petSize" id="petSize">
     <option value="very small">Very small</option>
     <option value="small">Small</option>
@@ -45,7 +47,7 @@
   <p>Does the pet have any medical needs? If so, please specify</p>
   <input type="radio" name="medicalNeeds" value="false"> The pet doesn't have any medical needs</br>
   <input type="radio" name="medicalNeeds" value="true"> The pet has medical needs</br>
-  <input type="text" name="ifMedicalNeeds">
+  <input type="text" name="ifMedicalNeeds" placeholder="if  it has medical needs specify here...">
 
   <button type="submit">Submit pet info</button>
 

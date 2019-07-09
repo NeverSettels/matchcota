@@ -1,6 +1,6 @@
 const { model, Schema } = require('mongoose')
 
-const adopterSchema = new Schema({
+const adopteeSchema = new Schema({
   userID: String,
   photos: [String],
   petType: String,
@@ -22,3 +22,5 @@ const adopterSchema = new Schema({
     enum: ['pup', 'young adult', 'adult', 'senior']
   }
 })
+
+module.exports = model('Adoptee', adopteeSchema)
