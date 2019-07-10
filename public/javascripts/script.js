@@ -19,7 +19,9 @@ for (var i = 0; i < deleteLinks.length; i++) {
   })
 }
 
-//edit varibles
+//Adopter edit  varibles
+const BtnAddPhoto = document.querySelector('#BtnAddPhoto')
+const addPhoto = document.querySelector('#addPhoto')
 const propertyEdit = document.querySelector('#property-edit')
 const popertyForm = document.querySelector('#item-property')
 const homeEdit = document.querySelector('#home-edit')
@@ -38,7 +40,7 @@ const firstPetEdit = document.querySelector('#firstPet-edit')
 const firstPetForm = document.querySelector('#item-firstPet')
 const petEdit = document.querySelector('#pet-edit')
 const petForm = document.querySelector('#item-pet')
-//diplay variables
+//adopter diplay variables
 const firstPet = document.querySelector('#firstPet')
 const otherPets = document.querySelector('#otherPets')
 const numPets = document.querySelector('#numPets')
@@ -55,7 +57,10 @@ if (otherPets.textContent === 'true') {
 } else {
   otherPets.textContent = "I don't have other pets"
 }
-//listeners
+//Adopter listeners
+BtnAddPhoto.onclick = e => {
+  addPhoto.classList.toggle('active')
+}
 propertyEdit.onclick = e => {
   popertyForm.classList.toggle('active')
 }

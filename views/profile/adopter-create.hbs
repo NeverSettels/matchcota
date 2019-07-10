@@ -1,6 +1,6 @@
 <form action="/adopter-create" method="POST" enctype="multipart/form-data">
-  <section>Remeber to fill the following information as honestly as possible so that you can connect with a pet that
-    truly meets yours needs, and so that you can fufill its needs as well.</section>
+  <section>Remember to fill the following information as honestly as possible so that you can connect with a pet that
+    truly meets yours needs.</section>
 
   <input type="hidden" name="userID" id='userID'>
 
@@ -13,14 +13,14 @@
   <label for="location">Location</label>
   <input type="text" name='location' id='location'>
 
-  <p>In what type of residence do you currently live</p>
-  <label for="typeHome">Choose one</label>
+  <p>In what type of residence do you currently live?</p>
+  <label for="typeHome">Choose home type</label>
   <select name="typeHome" id="typeHome">
     <option value="house">I live in a house</option>
     <option value="apartment">I live in an apartment</option>
   </select>
 
-  <label for="propertyType">Choose one</label>
+  <label for="propertyType">Choose property type</label>
   <select name="propertyType" id="propertyType">
     <option value="rent">I rent</option>
     <option value="own">I own</option>
@@ -28,7 +28,7 @@
 
 
   <p>Please indicate the size of you yard</p>
-  <label for="yard">Choose one</label>
+  <label for="yard">Choose yard size</label>
   <select name="yard" id="yard">
     <option value="no yard">I don't have a yard</option>
     <option value="very small">I have a very small yard</option>
@@ -38,42 +38,42 @@
     <option value="huge">I don't know where my property ends</option>
   </select>
 
-  <p>How many people other than youself live in this home</p>
-  <label for="peopleAtHome">Number of people</label>
-  <input type="number" name="peopleAtHome" id="peopleAtHome">
-  <p>If any of these are children what is the age of the youngest</p>
+  <p>How many people other than youself live in this home?</p>
+  <label for="peopleAtHome"></label>
+  <input type="number" name="peopleAtHome" id="peopleAtHome" placeholder="Number of people">
+  <p>If any of these are children, what is the age of the youngest?</p>
   <select name="childAge" id="childAge">
-    <option value="no children">I Don't have children</option>
+    <option value="no children">I don't have children</option>
     <option value="infant">0-5 years old</option>
     <option value="pre-teen">6-12 years old</option>
     <option value="teen">13 and up</option>
   </select>
 
-  <p>What is you current state of employment</p>
+  <p>What is you current state of employment?</p>
   <select name="employmentType" id="childAge">
-    <option value="unemployed">I'm Currently Unemployed</option>
-    <option value="self-employed"> I'm Self-employed</option>
+    <option value="unemployed">I'm currently unemployed</option>
+    <option value="self-employed"> I'm self-employed</option>
     <option value="retired">I'm retired</option>
     <option value="part-time"> I work part-time</option>
-    <option value="full-time">I work full full-time</option>
+    <option value="full-time">I work full-time</option>
     <option value="student">I'm currently a Student</option>
   </select>
 
-  <p>Aproximatley how many hours a week are the members of your household at home</p>
-  <label for="freeHoursPerWeek">Number of hours</label>
-  <input type="number" name="freeHoursPerWeek" id="freeHoursPerWeek">
+  <p>Aproximately how many hours a week are the members of your household at home?</p>
+  <label for="freeHoursPerWeek"></label>
+  <input type="number" name="freeHoursPerWeek" id="freeHoursPerWeek" placeholder="Number of hours">
 
-  <p>Is this your first time owning a pet</p>
+  <p>Is this your first time owning a pet?</p>
   <input type="radio" name="firstPet" value="true"> This is my first pet<br>
   <input type="radio" name="firstPet" value="false"> I have taken care of animals before <br>
 
-  <p>Do you own any other pets</p>
+  <p>Do you own any other pets?</p>
   <input type="radio" name="otherPets" value="true"> Yes, I have other pets<br>
-  <input type="radio" name="otherPets" value="false"> No, I Don't have other pets <br>
+  <input type="radio" name="otherPets" value="false"> No, I don't have other pets <br>
 
-  <p>If you have other pets how many</p>
-  <label for="numPets">Number of pets</label>
-  <input type="number" name='numPets' id="numPets">
+  <p>If you have any other pets, how many?</p>
+  <label for="numPets"></label>
+  <input type="number" name='numPets' id="numPets" placeholder="Number of pets">
 
   <button type="submit">Save</button>
 
