@@ -6,7 +6,8 @@ const {
   getAdopterCreate,
   postAdopterCreate,
   getAdopterProfile,
-  postAdopterProfile
+  postAdopterEdit,
+  getAdopterEdit
 } = require('../controllers/profileControllers')
 const { catchErrors, checkRole } = require('../middlewares/handlers')
 const { isLoggedIn } = require('../middlewares/auth')
@@ -21,5 +22,8 @@ router.get('/adopter-create', isLoggedIn, checkRole('adopter'), getAdopterCreate
 router.post('/adopter-create', uploadCloud.array('photo'), catchErrors(postAdopterCreate))
 
 router.get('/adopter-profile', isLoggedIn, checkRole('adopter'), getAdopterProfile)
-router.post('/adopter-profile', postAdopterProfile)
+router.get('/adopter-profile/edit/:id', isLoggedIn, getAdopterEdit)
+router.post('/adopter-profile/edit/:id', isLoggedIn, postAdopterEdit)
+//router.post('/adopter-profile', postAdopterProfile)
+//router.get('/delete-adopter/:id')
 module.exports = router

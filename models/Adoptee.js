@@ -2,7 +2,9 @@ const { model, Schema } = require('mongoose')
 
 const adopteeSchema = new Schema({
   userID: String,
+  location: String,
   photos: [String],
+  petName: String,
   petType: String,
   petSize: {
     type: String,

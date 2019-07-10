@@ -23,11 +23,7 @@ const userSchema = new Schema({
     enum: ['admin', 'adoptee', 'adopter'],
     required: true
   },
-  age: Number,
-  location: {
-    city: String,
-    delegation: String
-  }
+  age: Number
 })
 
 userSchema.plugin(plm, { usernameField: 'email' })
