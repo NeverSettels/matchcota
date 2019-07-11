@@ -57,7 +57,6 @@ exports.getAdopterProfile = (req, res, next) => {
     })
     .catch(err => res.render('profile/adopter-profile', err))
 }
-
 exports.getAdopterEdit = (req, res, next) => {
   const { id } = req.params
   Adopter.findById(id)
