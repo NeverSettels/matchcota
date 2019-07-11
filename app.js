@@ -14,7 +14,7 @@ const mongoStore = require('connect-mongo')(session)
 const { checkLoggedUser } = require('./middlewares/auth')
 
 mongoose
-  .connect(process.env.DB, {
+  .connect('mongodb+srv://matchcota:<password>@cluster0-02bgg.mongodb.net/test?retryWrites=true&w=majority', {
     useNewUrlParser: true
   })
   .then(x => {
