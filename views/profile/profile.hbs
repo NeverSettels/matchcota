@@ -1,19 +1,21 @@
-<img src="{{user.photo}}" alt="" width="100px">
-<a href="/profile/changepic">change</a>
-<h2>Role: {{user.role}}</h2>
-<h3>{{user.name}} age: {{age}}</h3>
-<h3>Email:</h3>
-<h4>{{user.email}}</h4>
-<h3>Tel:</h3>
-<h4>{{user.telephone}}</h4>
+<div onload="getHref()">
+  <img src="{{user.photo}}" alt="" width="100px">
+  <a href="/profile/changepic">change</a>
+  <h2 id='role'>Role: {{user.role}}</h2>
+  <h3>{{user.name}} age: {{user.age}}</h3>
+  <h3>Email:</h3>
+  <h4>{{user.email}}</h4>
+  <h3>Tel:</h3>
+  <h4>{{user.telephone}}</h4>
 
 
-<div id="adopter-options menu">
-  <a href="/adopter-create"> Add a home looking for a pet</a> <br />
-  <a href="/adopter-profile"> See your homes</a>
-</div>
+  <div id="adopter-options" class="active">
+    <a href="/adopter-create"> Add a home looking for a pet</a> <br />
+    <a href="/adopter-profile"> See your homes</a>
+  </div>
 
-<div id="adoptee-options menu">
-  <a href="/pet-create">Add a pet looking for a home</a>
-  <a href="/pet-profile">See your pets</a>
+  <div id="adoptee-options" class="active">
+    <a href="/pet-create">Add a pet looking for a home</a>
+    <a href="/pet-profile">See your pets</a>
+  </div>
 </div>

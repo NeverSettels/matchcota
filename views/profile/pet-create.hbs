@@ -10,6 +10,15 @@
   <label for="photo">Select photos</label>
   <input type="file" name="photo" id="photo" multiple>
 
+  <p>What is the general area where the reside such as city, or neigborhood </p>
+  <label for="location">Location</label>
+  <input type="text" name='location' id='location'>
+
+  <p>Whats the little guy's name</p>
+  <label for="petName">Name:</label>
+  <input type="text" name="petName" placeholder="Spot">
+
+
   <p>What kind of pet do you have for an adopter?</p>
   <label for="petType">Choose pet type</label>
   <select name="petType" id="petType">
@@ -40,6 +49,37 @@
     <option value="female">Female</option>
     <option value="male">Male</option>
   </select>
+
+
+  <p>Here select all the attributes that best apply to the pet</p>
+  <p>Sheding and grooming</p>
+  No Sheding: <input type="checkbox" name="attributes[]" value="No Sheding" /><br />
+  Some Sheding: <input type="checkbox" name="attributes[]" value="Some Sheding" /><br />
+  Heavy Sheding: <input type="checkbox" name="attributes[]" value="baseball" /><br />
+  No Gromming necessary: <input type="checkbox" name="attributes[]" value="No Gromming necessary" /><br />
+  Some Gromming necessary: <input type="checkbox" name="attributes[]" value="Some Gromming necessary" /><br />
+  Heavy Gromming necessary: <input type="checkbox" name="attributes[]" value="Heavy Gromming necessary" /><br />
+
+  <p>Personality</p>
+  Needs lots of attention: <input type="checkbox" name="attributes[]" value="Needs lots of attention" /><br />
+  Is independent: <input type="checkbox" name="attributes[]" value="Is independent" /><br />
+  Is confident: <input type="checkbox" name="attributes[]" value="Is confident" /><br />
+  Is shy or nervous: <input type="checkbox" name="attributes[]" value="Is shy or nervous" /><br />
+  Is playful: <input type="checkbox" name="attributes[]" value="Is playful" /><br />
+  Is relaxed: <input type="checkbox" name="attributes[]" value="Is relaxed" /><br />
+  Is protective: <input type="checkbox" name="attributes[]" value="Is protective" /><br />
+  Is quiet: <input type="checkbox" name="attributes[]" value="Is quiet" /><br />
+  Makes some noise: <input type="checkbox" name="attributes[]" value="Makes some noise" /><br />
+  Is noisy: <input type="checkbox" name="attributes[]" value="Is noisy" /><br />
+  Is great with kids: <input type="checkbox" name="attributes[]" value="Is great with kids" /><br />
+  Is not great with kids: <input type="checkbox" name="attributes[]" value="Is not great with kids" /><br />
+  Is great with other pets: <input type="checkbox" name="attributes[]" value="Is great with other pets" /><br />
+  Is not great with other pets: <input type="checkbox" name="attributes[]" value="Is not great with other pets" /><br />
+
+  <p>Training</p>
+  Is house trained: <input type="checkbox" name="attributes[]" value="Is house trained" /><br />
+  Has obidience training: <input type="checkbox" name="attributes[]" value="Has obidience training" /><br />
+
   <p>Is your pet sterilized?</p>
   <input type="radio" name="sterilized" value="true"> The pet is already sterilized </br>
   <input type="radio" name="sterilized" value="false"> The pet is not sterilized yet </br>

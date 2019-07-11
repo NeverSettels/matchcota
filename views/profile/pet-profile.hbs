@@ -1,0 +1,9 @@
+<h2>Welcome</h2>
+<section>Here where you can see all you adopter info and make changes</section>
+{{#each pets as |pet|}}
+<img src="{{pet.photos.[0]}}" alt="">
+<h2> {{pet.petName}} </h2>
+<h3>{{pet.location}} </h3>
+<p>{{pet._id}}</p>
+<a href="pet-profile/edit/{{pet._id}}">Edit</a>
+{{/each}}

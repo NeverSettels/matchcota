@@ -3,6 +3,7 @@
 <a href="/deleteAdopterPic/{{../_id}}/{{@index}}" class="delete"
   data-confirm="Are you sure to delete this item?">Delete</a>
 {{/each}}
+
 <button id="BtnAddPhoto">Add foto</button>
 <div id="addPhoto" class="active">
   <form action="/adopter-profile/edit/{{this._id}}" method="POST" enctype="multipart/form-data">
@@ -11,6 +12,15 @@
   </form>
 </div>
 
+<h3>Location</h3>
+<p>You live in {{this.location}}</p>
+<button id="location-edit">edit</button>
+<div id="item-location" class='active'>
+  <form action="/adopter-profile/edit/{{this._id}}" method="POST">
+    <input type="text" name='location' id='location'>
+    <button type="submit">save</button>
+  </form>
+</div>
 
 <h3>Ownership</h3>
 <p>{{this.propertyType}}</p>
@@ -139,3 +149,7 @@
     <button type="submit">Save</button>
   </form>
 </div>
+
+<a href="/adopter-profile/edit/{{this._id}}/delete" class="delete"
+  data-confirm="Are you sure to delete this item?">Delete
+  Adopter Profile</a>
