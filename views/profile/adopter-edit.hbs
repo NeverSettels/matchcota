@@ -1,0 +1,155 @@
+{{#each this.photos as |photo|}}
+<img src="{{photo}}" alt="">
+<a href="/deleteAdopterPic/{{../_id}}/{{@index}}" class="delete"
+  data-confirm="Are you sure to delete this item?">Delete</a>
+{{/each}}
+
+<button id="BtnAddPhoto">Add foto</button>
+<div id="addPhoto" class="active">
+  <form action="/adopter-profile/edit/{{this._id}}" method="POST" enctype="multipart/form-data">
+    <input type="file" name="photo" id='photo' multiple>
+    <button type="submit">save</button>
+  </form>
+</div>
+
+<h3>Location</h3>
+<p>You live in {{this.location}}</p>
+<button id="location-edit">edit</button>
+<div id="item-location" class='active'>
+  <form action="/adopter-profile/edit/{{this._id}}" method="POST">
+    <input type="text" name='location' id='location'>
+    <button type="submit">save</button>
+  </form>
+</div>
+
+<h3>Ownership</h3>
+<p>{{this.propertyType}}</p>
+
+<button id="property-edit">edit</button>
+<div id="item-property" class='active'>
+  <form action="/adopter-profile/edit/{{this._id}}" method="POST">
+    <select name="propertyType" id="propertyType">
+      <option value="rent">Rent</option>
+      <option value="own">Own</option>
+    </select>
+    <button type="submit">save</button>
+  </form>
+</div>
+
+
+
+<h3>Home style</h3>
+<p>{{this.typeHome}}</p>
+<button id="home-edit">edit</button>
+<div id="item-home" class='active'>
+  <form action="/adopter-profile/edit/{{this._id}}" method="POST">
+    <select name="typeHome" id="typeHome">
+      <option value="house">I live in a house</option>
+      <option value="apartment">I live in an apartment</option>
+    </select>
+    <button type="submit">save</button>
+  </form>
+</div>
+
+<h3>Yard Size:</h3>
+<p>{{this.yard}} </p>
+<button id="yard-edit">edit</button>
+<div id="item-yard" class='active'>
+  <form action="/adopter-profile/edit/{{this._id}}" method="POST">
+    <label for="yard">Choose one</label>
+    <select name="yard" id="yard">
+      <option value="no yard">I don't have a yard</option>
+      <option value="very small">I have a very small yard</option>
+      <option value="small">I have a small yard</option>
+      <option value="medium">I have a medium yard</option>
+      <option value="large">I have a large yard</option>
+      <option value="huge">I don't know where my property ends</option>
+    </select>
+    <button type="submit">save</button>
+  </form>
+</div>
+
+<h3>People I live With</h3>
+<p>Number of people in my Household: {{this.peopleAtHome}}</p>
+<button id="people-edit">edit</button>
+<div id="item-people" class='active'>
+  <form action="/adopter-profile/edit/{{this._id}}" method="POST"><input type="number" name="peopleAtHome"
+      id="peopleAtHome">
+    <button type="submit">save</button>
+  </form>
+</div>
+
+<h3>Children</h3>
+<p>The youngest Among us is an(a): {{this.childAge}}</p>
+<button id="children-edit">edit</button>
+<div id="item-children" class='active'>
+  <form action="/adopter-profile/edit/{{this._id}}" method="POST">
+    <select name="childAge" id="childAge">
+      <option value="no children">I Don't have children</option>
+      <option value="infant">0-5 years old</option>
+      <option value="pre-teen">6-12 years old</option>
+      <option value="teen">13 and up</option>
+    </select>
+    <button type="submit">save</button>
+  </form>
+</div>
+
+<h3>Work</h3>
+<p>I'm currently: {{this.employmentType}}</p>
+<button id="employment-edit">edit</button>
+<div id="item-employment" class='active'>
+  <form action="/adopter-profile/edit/{{this._id}}" method="POST">
+    <select name="employmentType" id="childAge">
+      <option value="unemployed">I'm Currently Unemployed</option>
+      <option value="self-employed"> I'm Self-employed</option>
+      <option value="retired">I'm retired</option>
+      <option value="part-time"> I work part-time</option>
+      <option value="full-time">I work full full-time</option>
+      <option value="student">I'm currently a Student</option>
+    </select>
+    <button type="submit">save</button>
+  </form>
+</div>
+
+<h3>Household hours free</h3>
+<p>Our house hold spends Aproximately {{this.freeHoursPerWeek}} hours at home</p>
+<button id="freetime-edit">edit</button>
+<div id="item-freetime" class='active'>
+  <form action="/adopter-profile/edit/{{this._id}}" method="POST">
+    <input type="number" name="freeHoursPerWeek" id="freeHoursPerWeek">
+    <button type="submit">save</button>
+  </form>
+</div>
+
+<h3>Experience</h3>
+<p id="firstPet">{{this.firstPet}}</p>
+<button id="firstPet-edit">edit</button>
+<div id="item-firstPet" class='active'>
+  <form action="/adopter-profile/edit/{{this._id}}" method="POST">
+    <input type="radio" name="firstPet" value="true"> This is my first pet<br>
+    <input type="radio" name="firstPet" value="false"> I have taken care of animals before <br>
+    <button type="submit">save</button></form>
+</div>
+
+<h3>Pets At home</h3>
+<p id='otherPets'>{{this.otherPets}}</p>
+<p id="numPets" class='active'> I have {{this.numPets}} other pets</p>
+<button id="pet-edit">edit</button>
+<div id="item-pet" class='active'>
+  <form action="/adopter-profile/edit/{{this._id}}" method="POST">
+
+    <p>Do you own any other pets</p>
+    <input type="radio" name="otherPets" value="true"> Yes, I have other pets<br>
+    <input type="radio" name="otherPets" value="false"> No, I Don't have other pets <br>
+
+    <p>If you have other pets how many</p>
+    <label for="numPets">Number of pets</label>
+    <input type="number" name='numPets' id="numPets">
+
+    <button type="submit">Save</button>
+  </form>
+</div>
+
+<a href="/adopter-profile/edit/{{this._id}}/delete" class="delete"
+  data-confirm="Are you sure to delete this item?">Delete
+  Adopter Profile</a>

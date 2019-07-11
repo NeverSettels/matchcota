@@ -8,13 +8,18 @@ exports.getAdopterCreate = (req, res, next) => {
 }
 
 exports.postAdopterCreate = async (req, res, next) => {
+<<<<<<< HEAD
   console.log(req.user)
 
+=======
+  //get user id for User model
+>>>>>>> 3191444780805d491f40de30de98b49428575d60
   const { _id } = req.user
   const userID = _id
 
   const {
     typeHome,
+    location,
     propertyType,
     yard,
     peopleAtHome,
@@ -31,6 +36,7 @@ exports.postAdopterCreate = async (req, res, next) => {
   await Adopter.create({
     userID,
     typeHome,
+    location,
     propertyType,
     yard,
     peopleAtHome,
@@ -46,12 +52,16 @@ exports.postAdopterCreate = async (req, res, next) => {
   res.redirect('/adopter-profile')
 }
 
+<<<<<<< HEAD
 /** Add adoptee profiles here (make sure adoptee model is being exported ) */
 
+=======
+>>>>>>> 3191444780805d491f40de30de98b49428575d60
 exports.getAdopterProfile = (req, res, next) => {
   const { _id } = req.user
   const userID = _id
 
+<<<<<<< HEAD
   adopter = Adopter.findOne({ userID })
     .then(adopter => {
       //console.log(adopter)
@@ -70,23 +80,82 @@ exports.postAdopterProfile = (req, res, next) => {
       res.render('profile/adopter-profile', adopter)
     })
     .catch(err => res.redirect('/login'))
+=======
+  Adopter.find({ userID })
+    .then(adopters => {
+      res.render('profile/adopter-profile', { adopters })
+    })
+    .catch(err => res.render('profile/adopter-profile', err))
+}
+exports.getAdopterEdit = (req, res, next) => {
+  const { id } = req.params
+  Adopter.findById(id)
+    .then(adopter => res.render('profile/adopter-edit', adopter))
+    .catch(err => res.render('adopter-edit', err))
+}
+
+exports.postAdopterEdit = (req, res, next) => {
+  const { id } = req.params
+  Adopter.findOneAndUpdate({ _id: id }, { ...req.body }, { new: true })
+    .then(adopter => {
+      if (req.files) {
+        adopter.photos.push(req.files[0].url)
+        adopter.save()
+      }
+      res.render('profile/adopter-edit', adopter)
+    })
+    .catch(err => res.render('profile/adopter-edit', err))
+}
+
+exports.getAdopterPicDelete = (req, res, next) => {
+  const { id, index } = req.params
+  Adopter.findById(id)
+    .then(adopter => {
+      adopter.photos.splice(index, 1)
+      adopter.save()
+      res.redirect(`/adopter-profile/edit/${id}`)
+    })
+    .catch(err => res.render('profile/adopter-edit', err))
+}
+exports.getAdopterDelete = (req, res, next) => {
+  const { id } = req.params
+  Adopter.findByIdAndRemove(id)
+    .then(adopter => res.redirect('/profile'))
+    .catch(err => res.send(err))
+}
+
+>>>>>>> 3191444780805d491f40de30de98b49428575d60
 exports.getAdopteeCreate = (req, res, next) => {
   res.render('profile/pet-create')
 }
 
 exports.postAdopteeCreate = async (req, res, next) => {
-  console.log(req.user)
-
   const { _id } = req.user
   const userID = _id
 
-  const { petType, otherPetType, petSize, gender, sterilized, character, medicalNeeds, ifMedicalNeeds, age } = req.body
+  const {
+    location,
+    attributes,
+    petType,
+    petName,
+    otherPetType,
+    petSize,
+    gender,
+    sterilized,
+    character,
+    medicalNeeds,
+    ifMedicalNeeds,
+    age
+  } = req.body
 
   const photos = req.files.map(photo => photo.url)
 
   await Adoptee.create({
     userID,
+    location,
+    attributes,
     petType,
+    petName,
     otherPetType,
     petSize,
     gender,
@@ -101,6 +170,7 @@ exports.postAdopteeCreate = async (req, res, next) => {
   res.redirect('/pet-profile')
 }
 
+<<<<<<< HEAD
 // delete commands TO DO
 
 exports.deletePet = (req, res, next) => {
@@ -113,4 +183,53 @@ exports.deleteUser = (req, res, next) => {
   Place.findByIdAndDelete(req.params.id)
     .then(() => res.redirect('/'))
     .catch(err => next(err))
+=======
+exports.getPetProfile = (req, res, next) => {
+  const { _id } = req.user
+  const userID = _id
+
+  Adoptee.find({ userID })
+    .then(pets => {
+      res.render('profile/pet-profile', { pets })
+    })
+    .catch(err => res.render('profile/pet-profile', err))
+}
+
+exports.getPetEdit = (req, res, next) => {
+  const { id } = req.params
+  Adoptee.findById(id)
+    .then(pet => res.render('profile/pet-edit', pet))
+    .catch(err => res.render('pet-edit', err))
+}
+exports.postPetEdit = (req, res, next) => {
+  const { id } = req.params
+  Adoptee.findOneAndUpdate({ _id: id }, { ...req.body }, { new: true })
+    .then(pet => {
+      if (req.files) {
+        console.log('urls', req.files[0])
+
+        //for(let i = 0; i<req.files[0].url)
+        pet.photos.push(req.files[0].url)
+        pet.save()
+      }
+      res.render('profile/pet-edit', pet)
+    })
+    .catch(err => res.render('profile/pet-edit', err))
+}
+exports.getPetPicDelete = (req, res, next) => {
+  const { id, index } = req.params
+  Adoptee.findById(id)
+    .then(pet => {
+      pet.photos.splice(index, 1)
+      pet.save()
+      res.redirect(`/pet-profile/edit/${id}`)
+    })
+    .catch(err => res.render('profile/pet-edit', err))
+}
+exports.getPetDelete = (req, res, next) => {
+  const { id } = req.params
+  Adoptee.findByIdAndRemove(id)
+    .then(pet => res.redirect('/profile'))
+    .catch(err => res.send(err))
+>>>>>>> 3191444780805d491f40de30de98b49428575d60
 }

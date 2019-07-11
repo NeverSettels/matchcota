@@ -1,69 +1,8 @@
-<h2>Welcome {{user.name}}</h2>
+<h2>Welcome</h2>
 <section>Here where you can see all you adopter info and make changes</section>
-
-<form action="/adopter-profile" method="Post">
-  {{#each this.photos as |photo|}}
-  <img src="{{photo}}" alt="">
-  {{/each}}
-
-  <section>
-    <h3>household</h3>
-    <p>You currently <select name="propertyType" id="propertyType" placholder="{{this.propertyType}}">
-        <option value="rent">rent</option>
-        <option value="own">own</option>
-      </select>, a
-      <select name="typeHome" id="typeHome" placeholder="{{this.typeHome}}">
-        <option value="house"> house</option>
-        <option value="apartment"> apartment</option>
-      </select>
-      .</strong> your yard
-      situation is:
-      <select name="yard" id="yard" placeholder="{{this.yard}}">
-        <option value="no yard">I don't have a yard</option>
-        <option value="very small">I have a very small yard</option>
-        <option value="small">I have a small yard</option>
-        <option value="medium">I have a medium yard</option>
-        <option value="large">I have a large yard</option>
-        <option value="huge">I don't know where my property ends</option>
-      </select>
-      You currently live with
-      <input type="number" name="peopleAtHome" id="peopleAtHome" placeholder="{{this.peopleAtHome}}">other people, the
-      youngest
-      of which is
-      <select name="childAge" id="childAge" placeholder="{{this.childAge}}">
-        <option value="no children">I Don't have children</option>
-        <option value="infant">0-5 years old</option>
-        <option value="pre-teen">6-12 years old</option>
-        <option value="teen">13 and up</option>
-      </select>
-    </p>
-
-    <h3>Habits</h3>
-    <p><select name="employmentType" id="childAge">
-        <option value="{{this.employmentType}}" selected>{{this.employmentType}}</option>
-        <option value="unemployed">I'm Currently Unemployed</option>
-        <option value="self-employed"> I'm Self-employed</option>
-        <option value="retired">I'm retired</option>
-        <option value="part-time"> I work part-time</option>
-        <option value="full-time">I work full full-time</option>
-        <option value="student">I'm currently a Student</option>
-      </select> and I have aproximately<input type="number" name="freeHoursPerWeek" id="freeHoursPerWeek"
-        value="{{freeHoursPerWeek}}"> hours free everyweek.
-    </p>
-    <h3>Experience and pets</h3>
-    <p>Is this your first time owning a pet</p>
-    <input type="radio" name="firstPet" value="true"> This is my first pet<br>
-    <input type="radio" name="firstPet" value="false"> I have taken care of animals before <br>
-
-    <p>Do you own any other pets</p>
-    <input type="radio" name="otherPets" value="true"> Yes, I have other pets<br>
-    <input type="radio" name="otherPets" value="false"> No, I Don't have other pets <br>
-
-    <p>If you have other pets how many</p>
-    <label for="numPets">Number of pets</label>
-    <input type="number" name='numPets' id="numPets" value="{{this.numPets}}">
-
-
-  </section>
-  <button type="submit">Save</button>
-</form>
+{{#each adopters as |adopter|}}
+<img src="{{adopter.photos.[0]}}" alt="">
+<h2> {{adopter.typeHome}} </h2>
+<h3>{{adopter.location}} </h3>
+<a href="adopter-profile/edit/{{adopter._id}}">Edit</a>
+{{/each}}

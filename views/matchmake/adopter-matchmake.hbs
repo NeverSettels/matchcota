@@ -1,0 +1,9 @@
+{{#each homes as |home|}}
+<img src="{{home.photos.[0]}}" alt="">
+<h2>{{home.typehome}}</h2>
+<h3>{{home.location}}</h3>
+<h4>Yard: {{home.yard}}</h4>
+<h4>Children: {{home.childAge}}</h4>
+<h4>Other pets: {{home.otherPets}}</h4>
+<a href="/deny">X</a> <a href="/acceptHome/{{home.userID}}/{{home._id}}">O</a>
+{{/each}}

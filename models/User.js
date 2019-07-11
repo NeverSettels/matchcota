@@ -24,10 +24,8 @@ const userSchema = new Schema({
     required: true
   },
   age: Number,
-  location: {
-    city: String,
-    delegation: String
-  }
+  interestedIn: [[String]],
+  matches: [[String]]
 })
 
 userSchema.plugin(plm, { usernameField: 'email' })
