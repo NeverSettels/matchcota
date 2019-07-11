@@ -8,13 +8,8 @@ exports.getAdopterCreate = (req, res, next) => {
 }
 
 exports.postAdopterCreate = async (req, res, next) => {
-<<<<<<< HEAD
-  //console.log(req.user)
-  //get user id for User model
-=======
   console.log(req.user)
 
->>>>>>> humberto
   const { _id } = req.user
   const userID = _id
 
