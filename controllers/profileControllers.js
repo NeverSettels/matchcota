@@ -14,7 +14,6 @@ exports.postAdopterCreate = async (req, res, next) => {
 
   const {
     typeHome,
-
     location,
     propertyType,
     yard,
@@ -32,7 +31,6 @@ exports.postAdopterCreate = async (req, res, next) => {
   await Adopter.create({
     userID,
     typeHome,
-
     location,
     propertyType,
     yard,

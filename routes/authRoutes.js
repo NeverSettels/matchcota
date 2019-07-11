@@ -28,13 +28,14 @@ router.post('/login', postLogin)
 router.get('/logout', getlogOut)
 router.get('/profile', isLoggedIn, getProfile)
 //adopter routes
-router.get('/adopter-create', isLoggedIn, checkRole('adopter'), getAdopteeCreate)
-router.post('/adopter-create', uploadCloud.array('photo'), catchErrors(postAdopteeCreate))
+router.get('/adopter-create', isLoggedIn, checkRole('adopter'), getAdopterCreate)
+router.post('/adopter-create', uploadCloud.array('photo'), catchErrors(postAdopterCreate))
 router.get('/adopter-profile', isLoggedIn, checkRole('adopter'), getAdopterProfile)
 router.get('/adopter-profile/edit/:id', isLoggedIn, getAdopterEdit)
 router.post('/adopter-profile/edit/:id', uploadCloud.array('photo'), postAdopterEdit)
 router.get('/deleteAdopterPic/:id/:index', getAdopterPicDelete)
 router.get('/adopter-profile/edit/:id/delete', getAdopterDelete)
+
 //pet routes
 router.get('/pet-create', isLoggedIn, checkRole('adoptee'), getAdopteeCreate)
 router.post('/pet-create', uploadCloud.array('photo'), catchErrors(postAdopteeCreate))

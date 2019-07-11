@@ -23,7 +23,9 @@ const userSchema = new Schema({
     enum: ['admin', 'adoptee', 'adopter'],
     required: true
   },
-  age: Number
+  age: Number,
+  interestedIn: [[String]],
+  matches: [[String]]
 })
 
 userSchema.plugin(plm, { usernameField: 'email' })
