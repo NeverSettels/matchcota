@@ -7,7 +7,7 @@ cloudinary.config({
   api_key: process.env.CLOUDINARY_KEY,
   api_secret: process.env.CLOUDINARY_SECRET
 })
-//todo diferent folders
+//ToDo diferent folders
 const storage = couldinaryStorage({
   cloudinary,
   folder: 'Matchcota',

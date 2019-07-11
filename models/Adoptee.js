@@ -15,8 +15,8 @@ const adopteeSchema = new Schema({
     type: String,
     enum: ['male', 'female']
   },
+  attributes: [String],
   sterilized: Boolean,
-  character: [String],
   medicalNeeds: Boolean,
   ifMedicalNeeds: String,
   age: {

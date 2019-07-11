@@ -1,0 +1,100 @@
+<div class="petEditForm">
+  {{#each this.photos as |photo|}}
+  <img src="{{photo}}" alt="">
+  <a href="/deletePetPic/{{../_id}}/{{@index}}" class="delete"
+    data-confirm="Are you sure to delete this item?">Delete</a>
+  {{/each}}
+  <button id="BtnAddPhoto">Add foto</button>
+  <div id="addPhoto" class="active">
+    <form action="/pet-profile/edit/{{this._id}}" method="POST" enctype="multipart/form-data">
+      <input type="file" name="photo" id='photo'>
+      <button type="submit">Add</button>
+    </form>
+  </div>
+
+  <h3>Location</h3>
+  <p>You live in {{this.location}}</p>
+  <button id="location-edit">edit</button>
+  <div id="item-location" class='active'>
+    <form action="/pet-profile/edit/{{this._id}}" method="POST">
+      <input type="text" name='location' id='location'>
+      <button type="submit">save</button>
+    </form>
+  </div>
+
+  <h3>The Pet</h3>
+  <p> Its name is:{{this.petName}}</p>
+  <button id="name-edit">edit</button>
+  <div id="item-name" class="active">
+    <form action="/pet-profile/edit/{{this._id}}" method="POST">
+      <input type="text" name="petName" placeholder="{{this.petName}}">
+      <button type="submit">save</button>
+    </form>
+  </div>
+
+
+  <h3>Attributes</h3>
+  <ul>
+    {{#each this.attributes as |attribute|}}
+    <li>{{attribute}}</li>
+    {{/each}}
+  </ul>
+  <button id="attribute-edit">edit</button>
+  <div id="item-attribute" class="active">
+    <form action="/pet-profile/edit/{{this._id}}" method="POST">
+      <p>Sheding and grooming</p>
+      No Sheding: <input type="checkbox" name="attributes[]" value="No Sheding" /><br />
+      Some Sheding: <input type="checkbox" name="attributes[]" value="Some Sheding" /><br />
+      Heavy Sheding: <input type="checkbox" name="attributes[]" value="baseball" /><br />
+      No Gromming necessary: <input type="checkbox" name="attributes[]" value="No Gromming necessary" /><br />
+      Some Gromming necessary: <input type="checkbox" name="attributes[]" value="Some Gromming necessary" /><br />
+      Heavy Gromming necessary: <input type="checkbox" name="attributes[]" value="Heavy Gromming necessary" /><br />
+
+      <p>Personality</p>
+      Needs lots of attention: <input type="checkbox" name="attributes[]" value="Needs lots of attention" /><br />
+      Is independent: <input type="checkbox" name="attributes[]" value="Is independent" /><br />
+      Is confident: <input type="checkbox" name="attributes[]" value="Is confident" /><br />
+      Is shy or nervous: <input type="checkbox" name="attributes[]" value="Is shy or nervous" /><br />
+      Is playful: <input type="checkbox" name="attributes[]" value="Is playful" /><br />
+      Is relaxed: <input type="checkbox" name="attributes[]" value="Is relaxed" /><br />
+      Is protective: <input type="checkbox" name="attributes[]" value="Is protective" /><br />
+      Is quiet: <input type="checkbox" name="attributes[]" value="Is quiet" /><br />
+      Makes some noise: <input type="checkbox" name="attributes[]" value="Makes some noise" /><br />
+      Is noisy: <input type="checkbox" name="attributes[]" value="Is noisy" /><br />
+      Is great with kids: <input type="checkbox" name="attributes[]" value="Is great with kids" /><br />
+      Is not great with kids: <input type="checkbox" name="attributes[]" value="Is not great with kids" /><br />
+      Is great with other pets: <input type="checkbox" name="attributes[]" value="Is great with other pets" /><br />
+      Is not great with other pets: <input type="checkbox" name="attributes[]"
+        value="Is not great with other pets" /><br />
+
+      <p>Training</p>
+      Is house trained: <input type="checkbox" name="attributes[]" value="Is house trained" /><br />
+      Has obidience training: <input type="checkbox" name="attributes[]" value="Has obidience training" /><br />
+      <button type="submit">save</button>
+    </form>
+  </div>
+  <h3>Is your pet Sterilized</h3>
+  <p id="isSterile">{{this.sterilized}}</p>
+  <button id="sterile-edit">edit</button>
+  <div id="item-sterile" class="active">
+    <form action="/pet-profile/edit/{{this._id}}" method="POST">
+      <input type="radio" name="sterilized" value="true"> The pet is already sterilized </br>
+      <input type="radio" name="sterilized" value="false"> The pet is not sterilized yet </br>
+      <button type="submit">save</button>
+    </form>
+  </div>
+  <h3>Medical Needs</h3>
+  <p id="hasMedicalNeeds">{{this.medicalNeeds}}</p>
+  <p id="disp-needs" class="active"> Medical Needs: {{this.ifMedicalNeeds}}</p>
+  <button id="medicalNeeds-edit">edit</button>
+  <div id="item-medicalNeeds" class='active'>
+    <form action="/pet-profile/edit/{{this._id}}" method="POST">
+      <input type="radio" name="medicalNeeds" value="false"> The pet doesn't have any medical needs</br>
+      <input type="radio" name="medicalNeeds" value="true"> The pet has medical needs</br>
+      <input type="text" name="ifMedicalNeeds" placeholder="if  it has medical needs specify here...">
+      <button type="submit">save</button>
+    </form>
+  </div>
+  <a href="/pet-profile/edit/{{this._id}}/delete" class="delete" data-confirm="Are you sure to delete this item?">Delete
+    pet Profile</a>
+</div>

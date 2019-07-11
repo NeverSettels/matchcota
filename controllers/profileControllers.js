@@ -14,6 +14,8 @@ exports.postAdopterCreate = async (req, res, next) => {
 
   const {
     typeHome,
+
+    location,
     propertyType,
     yard,
     peopleAtHome,
@@ -30,6 +32,8 @@ exports.postAdopterCreate = async (req, res, next) => {
   await Adopter.create({
     userID,
     typeHome,
+
+    location,
     propertyType,
     yard,
     peopleAtHome,
@@ -49,9 +53,8 @@ exports.getAdopterProfile = (req, res, next) => {
   const { _id } = req.user
   const userID = _id
 
-  adopters = Adopter.find({ userID })
+  Adopter.find({ userID })
     .then(adopters => {
-      console.log(adopters)
       res.render('profile/adopter-profile', { adopters })
     })
     .catch(err => res.render('profile/adopter-profile', err))
@@ -65,31 +68,65 @@ exports.getAdopterEdit = (req, res, next) => {
 
 exports.postAdopterEdit = (req, res, next) => {
   const { id } = req.params
-  const { url } = req.file
   Adopter.findOneAndUpdate({ _id: id }, { ...req.body }, { new: true })
     .then(adopter => {
-      req.user.photos.push(url)
+      if (req.files) {
+        adopter.photos.push(req.files[0].url)
+        adopter.save()
+      }
       res.render('profile/adopter-edit', adopter)
     })
-    .catch(err => res.render('adopter-edit', err))
+    .catch(err => res.render('profile/adopter-edit', err))
 }
+
+exports.getAdopterPicDelete = (req, res, next) => {
+  const { id, index } = req.params
+  Adopter.findById(id)
+    .then(adopter => {
+      adopter.photos.splice(index, 1)
+      adopter.save()
+      res.redirect(`/adopter-profile/edit/${id}`)
+    })
+    .catch(err => res.render('profile/adopter-edit', err))
+}
+exports.getAdopterDelete = (req, res, next) => {
+  const { id } = req.params
+  Adopter.findByIdAndRemove(id)
+    .then(adopter => res.redirect('/profile'))
+    .catch(err => res.send(err))
+}
+
 exports.getAdopteeCreate = (req, res, next) => {
-  res.render('profile/adopter-create')
+  res.render('profile/pet-create')
 }
 
 exports.postAdopteeCreate = async (req, res, next) => {
-  console.log(req.user)
-
   const { _id } = req.user
   const userID = _id
 
-  const { petType, otherPetType, petSize, gender, sterilized, character, medicalNeeds, ifMedicalNeeds, age } = req.body
+  const {
+    location,
+    attributes,
+    petType,
+    petName,
+    otherPetType,
+    petSize,
+    gender,
+    sterilized,
+    character,
+    medicalNeeds,
+    ifMedicalNeeds,
+    age
+  } = req.body
 
   const photos = req.files.map(photo => photo.url)
 
   await Adoptee.create({
     userID,
+    location,
+    attributes,
     petType,
+    petName,
     otherPetType,
     petSize,
     gender,
@@ -102,4 +139,53 @@ exports.postAdopteeCreate = async (req, res, next) => {
   })
 
   res.redirect('/pet-profile')
+}
+
+exports.getPetProfile = (req, res, next) => {
+  const { _id } = req.user
+  const userID = _id
+
+  Adoptee.find({ userID })
+    .then(pets => {
+      res.render('profile/pet-profile', { pets })
+    })
+    .catch(err => res.render('profile/pet-profile', err))
+}
+
+exports.getPetEdit = (req, res, next) => {
+  const { id } = req.params
+  Adoptee.findById(id)
+    .then(pet => res.render('profile/pet-edit', pet))
+    .catch(err => res.render('pet-edit', err))
+}
+exports.postPetEdit = (req, res, next) => {
+  const { id } = req.params
+  Adoptee.findOneAndUpdate({ _id: id }, { ...req.body }, { new: true })
+    .then(pet => {
+      if (req.files) {
+        console.log('urls', req.files[0])
+
+        //for(let i = 0; i<req.files[0].url)
+        pet.photos.push(req.files[0].url)
+        pet.save()
+      }
+      res.render('profile/pet-edit', pet)
+    })
+    .catch(err => res.render('profile/pet-edit', err))
+}
+exports.getPetPicDelete = (req, res, next) => {
+  const { id, index } = req.params
+  Adoptee.findById(id)
+    .then(pet => {
+      pet.photos.splice(index, 1)
+      pet.save()
+      res.redirect(`/pet-profile/edit/${id}`)
+    })
+    .catch(err => res.render('profile/pet-edit', err))
+}
+exports.getPetDelete = (req, res, next) => {
+  const { id } = req.params
+  Adoptee.findByIdAndRemove(id)
+    .then(pet => res.redirect('/profile'))
+    .catch(err => res.send(err))
 }
