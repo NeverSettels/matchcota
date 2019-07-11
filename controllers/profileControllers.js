@@ -8,12 +8,7 @@ exports.getAdopterCreate = (req, res, next) => {
 }
 
 exports.postAdopterCreate = async (req, res, next) => {
-<<<<<<< HEAD
-  console.log(req.user)
-
-=======
   //get user id for User model
->>>>>>> 3191444780805d491f40de30de98b49428575d60
   const { _id } = req.user
   const userID = _id
 
@@ -52,16 +47,10 @@ exports.postAdopterCreate = async (req, res, next) => {
   res.redirect('/adopter-profile')
 }
 
-<<<<<<< HEAD
-/** Add adoptee profiles here (make sure adoptee model is being exported ) */
-
-=======
->>>>>>> 3191444780805d491f40de30de98b49428575d60
 exports.getAdopterProfile = (req, res, next) => {
   const { _id } = req.user
   const userID = _id
 
-<<<<<<< HEAD
   adopter = Adopter.findOne({ userID })
     .then(adopter => {
       //console.log(adopter)
@@ -80,7 +69,6 @@ exports.postAdopterProfile = (req, res, next) => {
       res.render('profile/adopter-profile', adopter)
     })
     .catch(err => res.redirect('/login'))
-=======
   Adopter.find({ userID })
     .then(adopters => {
       res.render('profile/adopter-profile', { adopters })
@@ -124,7 +112,6 @@ exports.getAdopterDelete = (req, res, next) => {
     .catch(err => res.send(err))
 }
 
->>>>>>> 3191444780805d491f40de30de98b49428575d60
 exports.getAdopteeCreate = (req, res, next) => {
   res.render('profile/pet-create')
 }
@@ -170,20 +157,6 @@ exports.postAdopteeCreate = async (req, res, next) => {
   res.redirect('/pet-profile')
 }
 
-<<<<<<< HEAD
-// delete commands TO DO
-
-exports.deletePet = (req, res, next) => {
-  Place.findByIdAndDelete(req.params.id)
-    .then(() => res.redirect('/'))
-    .catch(err => next(err))
-}
-
-exports.deleteUser = (req, res, next) => {
-  Place.findByIdAndDelete(req.params.id)
-    .then(() => res.redirect('/'))
-    .catch(err => next(err))
-=======
 exports.getPetProfile = (req, res, next) => {
   const { _id } = req.user
   const userID = _id
@@ -231,5 +204,4 @@ exports.getPetDelete = (req, res, next) => {
   Adoptee.findByIdAndRemove(id)
     .then(pet => res.redirect('/profile'))
     .catch(err => res.send(err))
->>>>>>> 3191444780805d491f40de30de98b49428575d60
 }
