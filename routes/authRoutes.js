@@ -5,6 +5,9 @@ const uploadCloud = require('../config/cloudinary')
 const {
   getAdopterCreate,
   postAdopterCreate,
+  getAdopterProfile,
+  postAdopterEdit,
+  getAdopterEdit,
   getAdopteeCreate,
   postAdopteeCreate
 } = require('../controllers/profileControllers')
@@ -19,6 +22,10 @@ router.get('/logout', getlogOut)
 router.get('/profile', isLoggedIn, getProfile)
 router.get('/adopter-create', isLoggedIn, checkRole('adopter'), getAdopterCreate)
 router.post('/adopter-create', uploadCloud.array('photo'), catchErrors(postAdopterCreate))
+router.get('/adopter-profile', isLoggedIn, checkRole('adopter'), getAdopterProfile)
+router.get('/adopter-profile/edit/:id', isLoggedIn, getAdopterEdit)
+router.post('/adopter-profile/edit/:id', uploadCloud.array('photo'), postAdopterEdit)
+//router.get('/delete-adopter/:id')
 router.get('/pet-create', isLoggedIn, checkRole('adoptee'), getAdopteeCreate)
 router.post('/pet-create', uploadCloud.array('photo'), catchErrors(postAdopteeCreate))
 

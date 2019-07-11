@@ -1,5 +1,4 @@
 const passport = require('passport')
-//require('passport-local-mongoose')
 const User = require('../models/User')
 
 passport.use(User.createStrategy())

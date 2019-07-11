@@ -8,8 +8,7 @@ exports.getAdopterCreate = (req, res, next) => {
 }
 
 exports.postAdopterCreate = async (req, res, next) => {
-  console.log(req.user)
-
+  //get user id for User model
   const { _id } = req.user
   const userID = _id
 
@@ -46,8 +45,36 @@ exports.postAdopterCreate = async (req, res, next) => {
   res.redirect('/adopter-profile')
 }
 
+exports.getAdopterProfile = (req, res, next) => {
+  const { _id } = req.user
+  const userID = _id
+
+  adopters = Adopter.find({ userID })
+    .then(adopters => {
+      console.log(adopters)
+      res.render('profile/adopter-profile', { adopters })
+    })
+    .catch(err => res.render('profile/adopter-profile', err))
+}
+exports.getAdopterEdit = (req, res, next) => {
+  const { id } = req.params
+  Adopter.findById(id)
+    .then(adopter => res.render('profile/adopter-edit', adopter))
+    .catch(err => res.render('adopter-edit', err))
+}
+
+exports.postAdopterEdit = (req, res, next) => {
+  const { id } = req.params
+  const { url } = req.file
+  Adopter.findOneAndUpdate({ _id: id }, { ...req.body }, { new: true })
+    .then(adopter => {
+      req.user.photos.push(url)
+      res.render('profile/adopter-edit', adopter)
+    })
+    .catch(err => res.render('adopter-edit', err))
+}
 exports.getAdopteeCreate = (req, res, next) => {
-  res.render('profile/pet-create')
+  res.render('profile/adopter-create')
 }
 
 exports.postAdopteeCreate = async (req, res, next) => {
@@ -75,18 +102,4 @@ exports.postAdopteeCreate = async (req, res, next) => {
   })
 
   res.redirect('/pet-profile')
-}
-
-// delete commands TO DO
-
-exports.deletePet = (req, res, next) => {
-  Place.findByIdAndDelete(req.params.id)
-    .then(() => res.redirect('/'))
-    .catch(err => next(err))
-}
-
-exports.deleteUser = (req, res, next) => {
-  Place.findByIdAndDelete(req.params.id)
-    .then(() => res.redirect('/'))
-    .catch(err => next(err))
 }

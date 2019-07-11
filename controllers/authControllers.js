@@ -26,7 +26,9 @@ exports.getlogOut = (req, res, next) => {
   res.redirect('/login')
 }
 exports.getProfile = (req, res, next) => {
-  const user = req.user
+  res.render('profile/profile', { user: req.user })
+
+  /* const user = req.user
   console.log(req.user)
   if (user.role === 'adoptee') {
     res.redirect('/pet-create')
@@ -35,12 +37,5 @@ exports.getProfile = (req, res, next) => {
   } else {
     console.log(user)
     res.send('q pedo')
-  }
-}
-
-exports.getPet = (req, res, next) => {
-  res.render('profile/pet-create')
-}
-exports.getAdopter = (req, res, next) => {
-  res.render('profile/adopter-create')
+  }*/
 }
