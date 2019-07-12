@@ -21,13 +21,12 @@ exports.checkMatch = () => {
     const myUser = req.user
     const myId = myUser._id
     const myRole = myUser.role
-    interestArr = myUser.interestedIn
 
     User.find({ interestedIn: { $elemMatch: { $elemMatch: { $in: [myId] } } } })
       .then(users => {
         if (users.length === 0) next()
         users.forEach((user, i) => {
-          // userId is the Id of the match I just clicked on
+          // userId is the Id of the user match I just clicked on
           // user._id is the Id of the users interested in me
           if (user._id == userId) {
             //show profile and matched item info
@@ -37,8 +36,11 @@ exports.checkMatch = () => {
                 .then(pet => {
                   myUser.matches.push([userId, petId])
                   myUser.save()
-
-                  res.send(pet)
+                  User.findOne({ _id: userId }).then(user => {
+                    user.matches.push(users[i].interestedIn[i])
+                    user.save()
+                    res.render('matchmake/match')
+                  })
                 })
                 .catch(err => console.log(err))
             } else if (myRole === 'adoptee') {
@@ -47,8 +49,11 @@ exports.checkMatch = () => {
                 .then(adopter => {
                   myUser.matches.push([userId, homeId])
                   myUser.save()
-                  next()
-                  res.send(adopter)
+                  User.findOne({ _id: userId }).then(user => {
+                    user.matches.push(users[i].interestedIn[i])
+                    user.save()
+                    res.render('matchmake/match')
+                  })
                 })
                 .catch(err => console.log(err))
             }

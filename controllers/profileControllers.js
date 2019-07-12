@@ -51,30 +51,13 @@ exports.getAdopterProfile = (req, res, next) => {
   const { _id } = req.user
   const userID = _id
 
-  adopter = Adopter.findOne({ userID })
-    .then(adopter => {
-      //console.log(adopter)
-      res.render('profile/adopter-profile', adopter)
-    })
-    .catch(err => res.render('profile/adopter-profile', err))
-}
-
-exports.postAdopterProfile = (req, res, next) => {
-  console.log('body', req.body, 'user', req.user)
-  const { _id } = req.user
-  const userID = _id
-  adopter = Adopter.findOneAndUpdate({ userID }, { ...req.body }, { new: true })
-    .then(adopter => {
-      console.log('adopter', adopter)
-      res.render('profile/adopter-profile', adopter)
-    })
-    .catch(err => res.redirect('/login'))
   Adopter.find({ userID })
     .then(adopters => {
       res.render('profile/adopter-profile', { adopters })
     })
     .catch(err => res.render('profile/adopter-profile', err))
 }
+
 exports.getAdopterEdit = (req, res, next) => {
   const { id } = req.params
   Adopter.findById(id)
@@ -179,9 +162,6 @@ exports.postPetEdit = (req, res, next) => {
   Adoptee.findOneAndUpdate({ _id: id }, { ...req.body }, { new: true })
     .then(pet => {
       if (req.files) {
-        console.log('urls', req.files[0])
-
-        //for(let i = 0; i<req.files[0].url)
         pet.photos.push(req.files[0].url)
         pet.save()
       }
