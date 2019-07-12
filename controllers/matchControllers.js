@@ -63,3 +63,12 @@ exports.getAdopteeMatches = (req, res, next) => {
     .then(homes => res.render('matchmake/matched-adopter', { homes }))
     .catch(err => res.send(err))
 }
+exports.getMatch = (req, res, next) => {
+  const { id } = req.params
+  User.findOne({ _id: id })
+    .then(user => {
+      console.log(user)
+      res.render('matchmake/match', { user })
+    })
+    .catch(err => res.send(err))
+}

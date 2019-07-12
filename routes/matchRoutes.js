@@ -8,7 +8,8 @@ const {
   getHomes,
   postAcceptHome,
   getAdopterMatches,
-  getAdopteeMatches
+  getAdopteeMatches,
+  getMatch
 } = require('../controllers/matchControllers')
 
 router.get('/pets', isLoggedIn, checkRole('adopter'), getPets)
@@ -18,4 +19,6 @@ router.get('/pet-matches', isLoggedIn, checkRole('adoptee'), getAdopteeMatches)
 router.get('/homes', isLoggedIn, checkRole('adoptee'), getHomes)
 router.get('/acceptHome/:userId/:homeId', isLoggedIn, checkMatch(), postAcceptHome)
 router.get('/adopter-matches', isLoggedIn, checkRole('adopter'), getAdopterMatches)
+
+router.get('/matchmake/match/:id', isLoggedIn, getMatch)
 module.exports = router

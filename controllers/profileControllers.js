@@ -185,3 +185,16 @@ exports.getPetDelete = (req, res, next) => {
     .then(pet => res.redirect('/profile'))
     .catch(err => res.send(err))
 }
+
+exports.changePic = (req, res, next) => {
+  const { _id } = req.user
+  const { url } = req.file
+  req.body.photo = url
+  User.findOne({ _id })
+    .then(user => {
+      user.photo = url
+      user.save()
+      res.redirect('/profile')
+    })
+    .catch(err => res.send(err))
+}
