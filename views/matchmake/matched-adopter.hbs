@@ -1,5 +1,7 @@
-{{#each homes as |home|}}
-<img src="{{home.photos.[0]}}" alt="">
-<h2> {{home.typeHome}} </h2>
-<h3>{{home.location}} </h3>
-{{/each}}
+<div class="matchedAdopter">
+  {{#each homes as |home|}}
+  <img src="{{home.photos.[0]}}" alt="">
+  <h2> {{home.typeHome}} </h2>
+  <h3>{{home.location}} </h3>
+  {{/each}}
+</div>

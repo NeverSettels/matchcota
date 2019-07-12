@@ -1,11 +1,13 @@
-{{#each pets as |pet|}}
-<img src="{{pet.photos.[0]}}" alt="">
-<h2>{{pet.name}}</h2>
-<h3>{{pet.location}}</h3>
-<ul>
-  {{#each pet.attributes as |attribute|}}
-  <li>{{attribute}}</li>
+<div class="petMatchMake">
+  {{#each pets as |pet|}}
+  <img src="{{pet.photos.[0]}}" alt="">
+  <h2>{{pet.name}}</h2>
+  <h3>{{pet.location}}</h3>
+  <ul>
+    {{#each pet.attributes as |attribute|}}
+    <li>{{attribute}}</li>
+    {{/each}}
+  </ul>
+  <a href="/deny">X</a> <a href="/acceptPet/{{pet.userID}}/{{pet._id}}">O</a>
   {{/each}}
-</ul>
-<a href="/deny">X</a> <a href="/acceptPet/{{pet.userID}}/{{pet._id}}">O</a>
-{{/each}}
+</div>

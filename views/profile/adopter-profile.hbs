@@ -1,8 +1,10 @@
-<h2>Welcome</h2>
-<section>Here where you can see all you adopter info and make changes</section>
-{{#each adopters as |adopter|}}
-<img src="{{adopter.photos.[0]}}" alt="">
-<h2> {{adopter.typeHome}} </h2>
-<h3>{{adopter.location}} </h3>
-<a href="adopter-profile/edit/{{adopter._id}}">Edit</a>
-{{/each}}
+<div class="adopterProfile">
+  <h2>Welcome</h2>
+  <section>Here where you can see all you adopter info and make changes</section>
+  {{#each adopters as |adopter|}}
+  <img src="{{adopter.photos.[0]}}" alt="">
+  <h2> {{adopter.typeHome}} </h2>
+  <h3>{{adopter.location}} </h3>
+  <a href="adopter-profile/edit/{{adopter._id}}">Edit</a>
+  {{/each}}
+</div>
