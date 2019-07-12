@@ -33,26 +33,26 @@ exports.checkMatch = () => {
             if (myRole === 'adopter') {
               //See and store Adoptee and pet info
               Adoptee.findOne({ _id: petId })
-                .then(pet => {
+                .then(x => {
                   myUser.matches.push([userId, petId])
                   myUser.save()
                   User.findOne({ _id: userId }).then(user => {
                     user.matches.push(users[i].interestedIn[i])
                     user.save()
-                    res.render('matchmake/match')
+                    res.redirect(`/matchmake/match/${user._id}`)
                   })
                 })
                 .catch(err => console.log(err))
             } else if (myRole === 'adoptee') {
               //See and store Adopter and home info
               Adopter.findOne({ _id: homeId })
-                .then(adopter => {
+                .then(x => {
                   myUser.matches.push([userId, homeId])
                   myUser.save()
                   User.findOne({ _id: userId }).then(user => {
                     user.matches.push(users[i].interestedIn[i])
                     user.save()
-                    res.render('matchmake/match')
+                    res.redirect(`/matchmake/match/${user._id}`)
                   })
                 })
                 .catch(err => console.log(err))
