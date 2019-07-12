@@ -54,7 +54,6 @@ function checkOtherPets(page) {
   }
 }
 function menuOptions(page) {
-  console.log(page)
   if (page.includes('profile') && !page.includes('pet') && !page.includes('adopter')) {
     const role = document.querySelector('#role').textContent
     const adopterMenu = document.querySelector('#adopter-options')

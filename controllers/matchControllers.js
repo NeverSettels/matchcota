@@ -7,7 +7,6 @@ const mongoose = require('mongoose')
 exports.getPets = (req, res, next) => {
   Adoptee.find()
     .then(pets => {
-      console.log(pets)
       res.render('matchmake/pet-matchmake', { pets })
     })
     .catch(err => res.render('matchmake/pet-matchmake', err))
@@ -50,18 +49,15 @@ exports.getAdopterMatches = (req, res, next) => {
   req.user.matches.forEach(element => {
     petIdarr.push(mongoose.Types.ObjectId(`${element[1]}`))
   })
-  console.log(petIdarr)
   Adoptee.find({ _id: { $in: petIdarr } })
     .then(pets => res.render('matchmake/matched-pet', { pets }))
     .catch(err => res.send(err))
 }
 exports.getAdopteeMatches = (req, res, next) => {
   let homeIdarr = []
-  console.log(req.user.matches)
   req.user.matches.forEach(element => {
     homeIdarr.push(mongoose.Types.ObjectId(`${element[1]}`))
   })
-  console.log(homeIdarr)
   Adopter.find({ _id: { $in: homeIdarr } })
     .then(homes => res.render('matchmake/matched-adopter', { homes }))
     .catch(err => res.send(err))
@@ -70,7 +66,6 @@ exports.getMatch = (req, res, next) => {
   const { id } = req.params
   User.findOne({ _id: id })
     .then(user => {
-      console.log(user)
       res.render('matchmake/match', { user })
     })
     .catch(err => res.send(err))

@@ -1,4 +1,4 @@
-<div class="row d-flex justify-content-between">
+<div class="row d-flex justify-content-around">
   {{#each pets as |pet|}}
   <div class="card collapse show shadow-lg" style="width: 18rem;" id="Cardcollapse{{@index}}">
     <div id="carousel{{@index}}" class="carousel slide" data-ride="carousel">
@@ -24,32 +24,30 @@
     </div>
     <div class="card-body bg-light">
       <p class="card-text">
-        <h5 class="text-center">{{pet.petName}}</h2>
-          <h5 class="text-center">{{pet.petType}}</h2>
-            <h5 class="text-center">Age: {{pet.age}}</h4>
-              <h5 class="text-center">{{pet.location}}</h3>
-                <h5 class="text-center">Size: {{pet.petSize}}</h4>
-                  {{#if medicalNeeds}}
-                  <h5 class="text-center">Medical needs: {{ifMedicalNeeds}}</h4>
-                    {{/if}}
-                    <div class="d-flex justify-content-center">
-                      <a class="btn btn-primary " data-toggle="collapse" href="#collapse{{@index}}" role="button"
-                        aria-expanded="false" aria-controls="collapse{{@index}}">
-                        See more
-                      </a>
-                    </div>
-                    <div class="collapse" id="collapse{{@index}}">
-                      <div class="card card-body">
-                        <ul class="list-group list-group-flush">
-                          <li class="list-group-item">Name: ana test</li>
-                          <li class="list-group-item">Phone: 5555555555</li>
-                          <li class="list-group-item">Email: pettest@test.com</li>
-
-                        </ul>
-                      </div>
-                    </div>
+        <h5 class="text-center">{{pet.petName}}</h5>
+        <h5 class="text-center">{{pet.petType}}</h5>
+        <h5 class="text-center">Age: {{pet.age}}</h5>
+        <h5 class="text-center">{{pet.location}}</h5>
+        <h5 class="text-center">Size: {{pet.petSize}}</h5>
+        {{#if medicalNeeds}}
+        <h5 class="text-center">Medical needs: {{ifMedicalNeeds}}</h5>
+        {{/if}}
+        <div class="d-flex justify-content-center">
+          <a class="btn btn-primary " data-toggle="collapse" href="#collapse{{@index}}" role="button"
+            aria-expanded="false" aria-controls="collapse{{@index}}">
+            See more
+          </a>
+        </div>
+        <div class="collapse" id="collapse{{@index}}">
+          <div class="card card-body">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">Name: ana test</li>
+              <li class="list-group-item">Phone: 5555555555</li>
+              <li class="list-group-item">Email: pettest@test.com</li>
+            </ul>
+          </div>
+        </div>
       </p>
-
     </div>
   </div>
   {{/each}}

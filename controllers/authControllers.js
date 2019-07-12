@@ -7,7 +7,6 @@ exports.getSingUp = (req, res, next) => {
   res.render('auth/signup')
 }
 exports.postSignUp = async (req, res, next) => {
-  console.log(req.body)
   const user = await User.register({ ...req.body }, req.body.password)
   res.redirect('/login')
 }

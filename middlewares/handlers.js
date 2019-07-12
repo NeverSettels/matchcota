@@ -57,7 +57,6 @@ exports.checkMatch = () => {
                 })
                 .catch(err => console.log(err))
             }
-            console.log('match')
           } else next() //if they dont match my interest is saved
         })
       })
